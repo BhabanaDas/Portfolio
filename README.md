@@ -1,4 +1,4 @@
-# Hi, I'm [Your Name]! 👋
+# Hi, I'm Bhabana Das! 👋
 
 ### A passionate student and developer specializing in Electronic Systems & Software Engineering.
 
