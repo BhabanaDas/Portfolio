@@ -3,155 +3,387 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bhabana | Engineering & Leadership</title>
+    <title>Bhabana | Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
     <style>
-        :root {
-            --bg-gradient: linear-gradient(135deg, #0b0f19 0%, #0f172a 100%);
-            --glass-bg: rgba(255, 255, 255, 0.02);
-            --glass-border: rgba(255, 255, 255, 0.06);
-            --accent-glow: #6366f1;
-            --accent-cyan: #22d3ee;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
+        /* -----------------------------------------
+           Reset & Global Tokens
+        ----------------------------------------- */
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-gradient); color: var(--text-primary); line-height: 1.8; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 80px 24px; }
+        :root {
+            --bg-dark: #0b0f19;
+            --bg-deep-blue: #0f172a;
+            --card-surface: rgba(255, 255, 255, 0.02);
+            --card-border: rgba(255, 255, 255, 0.06);
+            --primary-glow: #6366f1;
+            --cyan-accent: #22d3ee;
+            --pink-accent: #f472b6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
 
-        /* Humanized Header */
-        header { padding: 80px 40px; margin-bottom: 80px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 40px; backdrop-filter: blur(20px); text-align: left; }
-        h1 { font-family: 'Space Grotesk', sans-serif; font-size: 4rem; letter-spacing: -2px; background: linear-gradient(to right, #fff, var(--accent-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .tagline { font-size: 1.2rem; color: var(--accent-cyan); font-weight: 600; margin-bottom: 15px; display: block; }
-        .bio { max-width: 700px; font-size: 1.1rem; color: var(--text-secondary); margin-top: 20px; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-deep-blue) 100%); 
+            color: var(--text-main); 
+            line-height: 1.8; 
+            -webkit-font-smoothing: antialiased;
+        }
 
-        /* Sections */
-        h2 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; margin: 80px 0 30px; border-left: 4px solid var(--accent-glow); padding-left: 20px; }
+        .container { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 80px 24px; 
+        }
+
+        /* -----------------------------------------
+           Hero Header
+        ----------------------------------------- */
+        .hero { 
+            padding: 80px 40px; 
+            margin-bottom: 80px; 
+            background: var(--card-surface); 
+            border: 1px solid var(--card-border); 
+            border-radius: 40px; 
+            backdrop-filter: blur(20px); 
+        }
+
+        .hero .intro-tag { 
+            font-size: 1.2rem; 
+            color: var(--cyan-accent); 
+            font-weight: 600; 
+            margin-bottom: 15px; 
+            display: block; 
+        }
+
+        .hero h1 { 
+            font-family: 'Space Grotesk', sans-serif; 
+            font-size: 4rem; 
+            letter-spacing: -2px; 
+            line-height: 1.2;
+            background: linear-gradient(to right, #fff, var(--cyan-accent)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+
+        .hero .bio { 
+            max-width: 700px; 
+            font-size: 1.1rem; 
+            color: var(--text-muted); 
+            margin-top: 20px; 
+        }
+
+        /* -----------------------------------------
+           Layout Grid & Cards
+        ----------------------------------------- */
+        section {
+            margin-bottom: 80px;
+        }
+
+        .section-title { 
+            font-family: 'Space Grotesk', sans-serif; 
+            font-size: 2rem; 
+            margin-bottom: 30px; 
+            border-left: 4px solid var(--primary-glow); 
+            padding-left: 20px; 
+        }
         
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .card { background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 35px; border-radius: 30px; transition: 0.4s ease; position: relative; overflow: hidden; }
-        .card:hover { border-color: rgba(99, 102, 241, 0.4); transform: translateY(-8px); background: rgba(255, 255, 255, 0.04); }
+        .showcase-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 30px; 
+        }
+
+        .card { 
+            background: var(--card-surface); 
+            border: 1px solid var(--card-border); 
+            padding: 35px; 
+            border-radius: 30px; 
+            transition: all 0.4s ease; 
+        }
+
+        .card:hover { 
+            border-color: rgba(99, 102, 241, 0.4); 
+            transform: translateY(-8px); 
+            background: rgba(255, 255, 255, 0.04); 
+        }
         
-        h3 { font-family: 'Space Grotesk', sans-serif; color: #fff; margin-bottom: 12px; font-size: 1.4rem; }
-        .insight { font-size: 0.9rem; color: var(--accent-cyan); font-style: italic; margin-top: 15px; display: block; }
+        .card h3 { 
+            font-family: 'Space Grotesk', sans-serif; 
+            color: #fff; 
+            margin-bottom: 12px; 
+            font-size: 1.4rem; 
+        }
 
-        /* Skill Bars */
-        .skill-row { margin-bottom: 25px; }
-        .skill-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 500; }
-        .bar-bg { background: rgba(255,255,255,0.05); height: 6px; border-radius: 10px; }
-        .bar-fill { height: 100%; border-radius: 10px; background: linear-gradient(90deg, var(--accent-glow), var(--accent-cyan)); transition: width 1s ease-in-out; }
+        .card p {
+            color: var(--text-muted);
+        }
 
-        /* Footer */
-        footer { margin-top: 100px; padding: 60px 0; border-top: 1px solid var(--glass-border); text-align: center; }
-        .btn { display: inline-block; padding: 12px 30px; border-radius: 50px; background: var(--accent-glow); color: white; text-decoration: none; font-weight: 600; transition: 0.3s; margin: 10px; }
-        .btn:hover { opacity: 0.9; transform: scale(1.05); }
+        /* Meta details inside cards (Replaced the artificial "insight" tag) */
+        .card .meta-tag { 
+            font-size: 0.9rem; 
+            color: var(--cyan-accent); 
+            font-weight: 500;
+            margin-top: 15px; 
+            display: block; 
+        }
+
+        /* -----------------------------------------
+           Leadership Customizations
+        ----------------------------------------- */
+        .card.society { border-left: 4px solid var(--primary-glow); }
+        .card.fests { border-left: 4px solid var(--pink-accent); }
+
+        .por-list { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+        }
+
+        .por-item { 
+            padding-left: 15px; 
+            border-left: 2px solid var(--card-border); 
+        }
+
+        .por-item role { 
+            display: block;
+            color: var(--cyan-accent); 
+            font-weight: bold;
+        }
+
+        .por-item p { font-size: 0.85rem; }
+
+        .fest-list { 
+            list-style: none; 
+        }
+
+        .fest-list li { 
+            margin-bottom: 10px; 
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .fest-list strong { color: #fff; }
+        .fest-list span { font-size: 0.85rem; display: block; margin-top: 2px; }
+
+        /* -----------------------------------------
+           Skills Section (Humanized Layout)
+        ----------------------------------------- */
+        .skills-container {
+            background: var(--card-surface);
+            border: 1px solid var(--card-border);
+            padding: 40px;
+            border-radius: 30px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .skill-group h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--cyan-accent);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* Real developers use tags/pills for skills rather than fake percentage loaders */
+        .skill-pill {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+        }
+        .skill-pill:hover {
+            border-color: var(--primary-glow);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        /* -----------------------------------------
+           Footer & CTA
+        ----------------------------------------- */
+        footer { 
+            margin-top: 100px; 
+            padding: 60px 0; 
+            border-top: 1px solid var(--card-border); 
+            text-align: center; 
+        }
+
+        footer p { margin-bottom: 20px; }
+
+        .btn-group {
+            margin-bottom: 40px;
+        }
+
+        .btn { 
+            display: inline-block; 
+            padding: 12px 30px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: all 0.3s ease; 
+            margin: 0 10px; 
+        }
+
+        .btn.primary {
+            background: var(--primary-glow); 
+            color: #fff; 
+        }
+
+        .btn.secondary {
+            background: transparent; 
+            border: 1px solid var(--card-border); 
+            color: var(--text-main);
+        }
+
+        .btn:hover { 
+            opacity: 0.9; 
+            transform: translateY(-2px); 
+        }
+
+        .copyright { 
+            font-size: 0.8rem; 
+            opacity: 0.5; 
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <header>
-        <span class="tagline">Hello, I'm Bhabana.</span>
+
+    <header class="hero">
+        <span class="intro-tag">Hello, I'm Bhabana.</span>
         <h1>Engineering with <br>Empathy & Precision.</h1>
         <p class="bio">
             I'm an ECE student at <strong>NIT Silchar</strong> who believes that great technology is built where hardware logic meets human-centered data. Whether I'm debugging a VLSI circuit in Cadence or leading a team at the Eco Club, my goal is the same: to make complex systems work simply and sustainably.
         </p>
     </header>
 
-    <h2>The Engineering Journey</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>Silicon & Hardware</h3>
-            <p style="color: var(--text-secondary);">I spend a lot of my time in <strong>Cadence Virtuoso</strong> and LTspice, simulating the tiny switches that run the world. My focus has been on dynamic latched comparators and CMOS logic—balancing speed with power efficiency.</p>
-            <span class="insight">"Precision in the smallest details leads to stability in the largest systems."</span>
-        </div>
-        <div class="card">
-            <h3>Human Signals (ECG/PPG)</h3>
-            <p style="color: var(--text-secondary);">One of my favorite projects involves health tech. I analyze biological signals like ECG and PPG to understand how we can use electronics to monitor and improve human health in real-time.</p>
-            <span class="insight">"Turning heartbeats into actionable data."</span>
-        </div>
-        <div class="card">
-            <h3>Data & Market Analysis</h3>
-            <p style="color: var(--text-secondary);">I don't just build hardware; I like to understand the market for it. My analysis of the laptop industry and ongoing fraud detection projects show my curiosity for how data protects and moves our economy.</p>
-            <span class="insight">"Using ML to find the truth hidden in transaction patterns."</span>
-        </div>
-    </div>
-
-    <h2>Leadership & Community at NIT Silchar</h2>
-    <div class="grid">
-        <!-- ECS & Eco Club Section -->
-        <div class="card" style="border-left: 4px solid var(--accent-glow);">
-            <h3>Society & Sustainability</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 20px;">
-                I believe in contributing to the campus ecosystem beyond the classroom. From technical literacy to environmental ethics, I've grown through dedicated roles in our campus societies.
-            </p>
-            <div class="por-section" style="display: flex; flex-direction: column; gap: 15px;">
-                <div style="padding-left: 15px; border-left: 2px solid var(--glass-border);">
-                    <strong style="color: var(--accent-cyan);">Eco Club // Senior Executive</strong>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Leading sustainability initiatives and mentoring junior members.</p>
-                </div>
-                <div style="padding-left: 15px; border-left: 2px solid var(--glass-border);">
-                    <strong style="color: var(--accent-cyan);">ECS // Literary & PR Member</strong>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Bridging the gap between core electronics and public communication at the Electronics & Communication Society.</p>
-                </div>
+    <section>
+        <h2 class="section-title">The Engineering Journey</h2>
+        <div class="showcase-grid">
+            <div class="card">
+                <h3>Silicon & Hardware</h3>
+                <p>I spend a lot of my time in <strong>Cadence Virtuoso</strong> and LTspice, simulating the tiny switches that run the world. My focus has been on dynamic latched comparators and CMOS logic—balancing speed with power efficiency.</p>
+                <span class="meta-tag">// Core Focus: VLSI & Precision Design</span>
+            </div>
+            
+            <div class="card">
+                <h3>Human Signals (ECG/PPG)</h3>
+                <p>One of my favorite projects involves health tech. I analyze biological signals like ECG and PPG to understand how we can use electronics to monitor and improve human health in real-time.</p>
+                <span class="meta-tag">// Project: Real-time Signal Processing</span>
+            </div>
+            
+            <div class="card">
+                <h3>Data & Market Analysis</h3>
+                <p>I don't just build hardware; I like to understand the market for it. My analysis of the laptop industry and ongoing fraud detection projects show my curiosity for how data protects and moves our economy.</p>
+                <span class="meta-tag">// Scope: ML & Fraud Detection Patterns</span>
             </div>
         </div>
+    </section>
 
-        <!-- Major Fests Section -->
-        <div class="card" style="border-left: 4px solid #f472b6;">
-            <h3>Co-Head of Events // Major Fests</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 20px;">
-                Managed logistics, budgets, and team coordination for the three pillars of NIT Silchar's campus life:
-            </p>
-            <ul style="list-style: none; color: var(--text-secondary); font-size: 0.95rem;">
-                <li style="margin-bottom: 10px;">
-                    <strong style="color: #fff;">• Incandescence:</strong> 
-                    <span style="font-size: 0.85rem;">The annual cultural festival. Managing the energy of thousands.</span>
-                </li>
-                <li style="margin-bottom: 10px;">
-                    <strong style="color: #fff;">• Tecnoesis:</strong> 
-                    <span style="font-size: 0.85rem;">The technical cornerstone. Organizing high-stakes engineering competitions.</span>
-                </li>
-                <li style="margin-bottom: 10px;">
-                    <strong style="color: #fff;">• Posua:</strong> 
-                    <span style="font-size: 0.85rem;">The spring fest. Celebrating our regional roots and heritage.</span>
-                </li>
-            </ul>
+    <section>
+        <h2 class="section-title">Leadership & Community at NIT Silchar</h2>
+        <div class="showcase-grid">
+            
+            <div class="card society">
+                <h3>Society & Sustainability</h3>
+                <p style="margin-bottom: 20px;">
+                    I believe in contributing to the campus ecosystem beyond the classroom. From technical literacy to environmental ethics, I've grown through dedicated roles in our campus societies.
+                </p>
+                <div class="por-list">
+                    <div class="por-item">
+                        <role>Eco Club // Senior Executive</role>
+                        <p>Leading sustainability initiatives and mentoring junior members.</p>
                     </div>
-    </div>
-
-    <h2>Technical Proficiency</h2>
-    <div class="card">
-        <div class="grid">
-            <div>
-                <div class="skill-row">
-                    <div class="skill-label"><span>VLSI Design & Core ECE</span><span>85%</span></div>
-                    <div class="bar-bg"><div class="bar-fill" style="width: 85%;"></div></div>
-                </div>
-                <div class="skill-row">
-                    <div class="skill-label"><span>Architecture & Assembly</span><span>80%</span></div>
-                    <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
+                    <div class="por-item">
+                        <role>ECS // Literary & PR Member</role>
+                        <p>Bridging the gap between core electronics and public communication at the Electronics & Communication Society.</p>
+                    </div>
                 </div>
             </div>
-            <div>
-                <div class="skill-row">
-                    <div class="skill-label"><span>Python & ML Analysis</span><span>80%</span></div>
-                    <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
-                </div>
-                <div class="skill-row">
-                    <div class="skill-label"><span>App Dev & API Integration</span><span>70%</span></div>
-                    <div class="bar-bg"><div class="bar-fill" style="width: 70%;"></div></div>
-                </div>
+
+            <div class="card fests">
+                <h3>Co-Head of Events // Major Fests</h3>
+                <p style="margin-bottom: 20px;">
+                    Managed logistics, budgets, and team coordination for the three pillars of NIT Silchar's campus life:
+                </p>
+                <ul class="fest-list">
+                    <li>
+                        <strong>• Incandescence:</strong> 
+                        <span>The annual cultural festival. Managing the energy of thousands.</span>
+                    </li>
+                    <li>
+                        <strong>• Tecnoesis:</strong> 
+                        <span>The technical cornerstone. Organizing high-stakes engineering competitions.</span>
+                    </li>
+                    <li>
+                        <strong>• Posua:</strong> 
+                        <span>The spring fest. Celebrating our regional roots and heritage.</span>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Technical Proficiency</h2>
+        <div class="skills-container">
+            <div class="skills-grid">
+                
+                <div class="skill-group">
+                    <h4>Hardware & Core</h4>
+                    <div class="skill-tags">
+                        <span class="skill-pill">VLSI Design</span>
+                        <span class="skill-pill">Cadence Virtuoso</span>
+                        <span class="skill-pill">LTspice</span>
+                        <span class="skill-pill">Architecture & Assembly</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h4>Software & Analytics</h4>
+                    <div class="skill-tags">
+                        <span class="skill-pill">Python</span>
+                        <span class="skill-pill">Machine Learning</span>
+                        <span class="skill-pill">Data Analysis</span>
+                        <span class="skill-pill">App Dev & APIs</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <p style="margin-bottom: 20px;">Currently preparing for <strong>GATE 2026</strong> and exploring the next big challenge in tech.</p>
-        <a href="https://www.linkedin.com/in/bhabana-das-nit-silchar/" class="btn">LinkedIn</a>
-        <a href="https://github.com/BhabanaDas" class="btn" style="background: transparent; border: 1px solid var(--glass-border);">GitHub</a>
-        <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.5;">© 2026 Bhabana // NIT Silchar</p>
+        <p>Currently preparing for <strong>GATE 2026</strong> and exploring the next big challenge in tech.</p>
+        <div class="btn-group">
+            <a href="https://www.linkedin.com/in/bhabana-das-nit-silchar/" class="btn primary">LinkedIn</a>
+            <a href="https://github.com/BhabanaDas" class="btn secondary">GitHub</a>
+        </div>
+        <p class="copyright">© 2026 Bhabana // NIT Silchar</p>
     </footer>
 </div>
 
